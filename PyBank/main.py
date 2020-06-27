@@ -64,3 +64,12 @@ print(f"Average Change: ${average_month_change_comma}")
 print(f"Greatest Increase in Profits: {max_month} ${max_change_comma} USD")
 print(f"Greatest Decrease in Profits: {min_month} ${min_change_comma} USD")
 print(f"{nl}{nl}")
+
+results_file = os.path.join('analysis', 'analysis.txt')
+with open(results_file, 'a') as analysis_write:
+    analysis_write.write(f"{nl}{nl}Financial Analysis{nl}-------------------------------{nl}")
+    analysis_write.write(f"Total Months: {count_of_months}{nl}Total: ${total_sum_comma}{nl}")
+    analysis_write.write(f"Average Change: ${average_month_change_comma}{nl}")
+    analysis_write.write(f"Greatest Increase in Profits: {max_month} ${max_change_comma} USD{nl}")
+    analysis_write.write(f"Greatest Decrease in Profits: {min_month} ${min_change_comma} USD{nl}")
+    analysis_write.write(f"{nl}{nl}")
