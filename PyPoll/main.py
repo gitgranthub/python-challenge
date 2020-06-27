@@ -12,13 +12,13 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
 
     #variables holding values in the csv file
-    
     khan_vote_total = 0
     correy_vote_total = 0
     li_vote_total = 0
     otooley_vote_total = 0
     total_votes = 0
     
+    #iterate through csv file to pull values
     for row in csvreader:
         total_votes += 1
         
@@ -43,7 +43,7 @@ winner = max(canidates_totals_dict, key=canidates_totals_dict.get)
 #This variable allows 'next line' code to be embeded in this print statement f-string
 nl = "\n" 
 
-
+#print to terminal
 print(f"{nl}{nl}Election Results{nl}-------------------------------")
 print(f"Total Votes: {total_votes}{nl}-------------------------------")
 print(f"Kahn: {khan_pct}.000% ({khan_vote_total})")
@@ -53,6 +53,7 @@ print(f"O'Tooley: {otooley_pct}.000% ({otooley_vote_total}){nl}-----------------
 print(f"Winner: {winner}{nl}-------------------------------")
 print(f"{nl}{nl}")
 
+#write to .txt file
 results_file = os.path.join('analysis', 'analysis.txt')
 with open(results_file, 'a') as analysis_write:
     analysis_write.write(f"{nl}{nl}Election Results{nl}-------------------------------{nl}")
