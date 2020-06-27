@@ -33,10 +33,10 @@ with open(csvpath) as csvfile:
 
 #Final Statistical Analysis Calculations before print
 canidates_totals_dict = {"Kahn": int(khan_vote_total), "Correy": int(correy_vote_total), "Li": int(li_vote_total), "O'Tooley": int(otooley_vote_total)}
-khan_pct = 0
-correy_pct = 0
-li_pct = 0
-otooley_pct = 0
+khan_pct = round(khan_vote_total * 100.0 / total_votes)
+correy_pct = round(correy_vote_total * 100.0 / total_votes)
+li_pct = round(li_vote_total * 100.0 / total_votes)
+otooley_pct = round(otooley_vote_total * 100.0 / total_votes)
 winner = max(canidates_totals_dict, key=canidates_totals_dict.get) 
 
 
@@ -53,13 +53,13 @@ print(f"O'Tooley: {otooley_pct}% ({otooley_vote_total}){nl}---------------------
 print(f"Winner: {winner}{nl}-------------------------------")
 print(f"{nl}{nl}")
 
-# results_file = os.path.join('analysis', 'analysis.txt')
-# with open(results_file, 'a') as analysis_write:
-#     analysis_write.write(f"{nl}{nl}Election Results{nl}-------------------------------{nl}")
-#     analysis_write.write(f"Total Votes: {total_votes}{nl}-------------------------------{nl}")
-#     analysis_write.write(f"Kahn: {khan_pct}% ({khan_vote_total}){nl}")
-#     analysis_write.write(f"Correy: {correy_pct}% ({correy_vote_total}){nl}")
-#     analysis_write.write(f"Li: {li_pct}% ({li_vote_total}){nl}")
-#     analysis_write.write(f"O'Tooley: {otooley_pct}% ({otooley_vote_total}){nl}-------------------------------{nl}")
-#     analysis_write.write(f"Winner: {winner}{nl}-------------------------------{nl}")
-#     analysis_write.write(f"{nl}{nl}")
+results_file = os.path.join('analysis', 'analysis.txt')
+with open(results_file, 'a') as analysis_write:
+    analysis_write.write(f"{nl}{nl}Election Results{nl}-------------------------------{nl}")
+    analysis_write.write(f"Total Votes: {total_votes}{nl}-------------------------------{nl}")
+    analysis_write.write(f"Kahn: {khan_pct}% ({khan_vote_total}){nl}")
+    analysis_write.write(f"Correy: {correy_pct}% ({correy_vote_total}){nl}")
+    analysis_write.write(f"Li: {li_pct}% ({li_vote_total}){nl}")
+    analysis_write.write(f"O'Tooley: {otooley_pct}% ({otooley_vote_total}){nl}-------------------------------{nl}")
+    analysis_write.write(f"Winner: {winner}{nl}-------------------------------{nl}")
+    analysis_write.write(f"{nl}{nl}")

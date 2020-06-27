@@ -1,6 +1,14 @@
 import os
 import csv
 
+#a function to get the percentage of each canidates votes
+def get_letter_percentage(dictionary, s):
+    sum = 0
+    for key in dictionary:
+        sum += dictionary[key]
+
+    return round(int(dictionary[s])) / round(int(sum))
+
 #reading in the relative path of the csv file to csvpath variable
 csvpath = os.path.join('Resources', 'election_data.csv')
 
@@ -33,10 +41,10 @@ with open(csvpath) as csvfile:
 
 #Final Statistical Analysis Calculations before print
 canidates_totals_dict = {"Kahn": int(khan_vote_total), "Correy": int(correy_vote_total), "Li": int(li_vote_total), "O'Tooley": int(otooley_vote_total)}
-khan_pct = 0
-correy_pct = 0
-li_pct = 0
-otooley_pct = 0
+khan_pct = get_letter_percentage(canidates_totals_dict, "Kahn")
+correy_pct = get_letter_percentage(canidates_totals_dict, "Correy")
+li_pct = get_letter_percentage(canidates_totals_dict, "Li")
+otooley_pct = get_letter_percentage(canidates_totals_dict, "O'Tooley")
 winner = max(canidates_totals_dict, key=canidates_totals_dict.get) 
 
 
